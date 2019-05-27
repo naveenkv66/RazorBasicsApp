@@ -20,7 +20,7 @@
 
 </head>
 <body>
-  
+
     @await Html.PartialAsync("_Navigation");
     @RenderBody();
     <footer>
@@ -48,8 +48,24 @@
                 crossorigin="anonymous"
                 integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
         </script>
+
     </environment>
 
+    <environment include="Development">
+        <script>
+            $(document).ready(function () {
+                $(".voteUp").click(function (e) {
+                    e.preventDefault();
+                    var id = $(this).data("Productid")
+                    $.post("/home/vote", { id= id }, function (data) {
+
+                        $("#surveyWidget").html(data);
+                    })
+
+                })
+            });
+        </script>
+    </environment>
 
     @RenderSection("Scripts", required: false)
 </body>

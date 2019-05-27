@@ -31,6 +31,12 @@ namespace RazorBasicsApp.Controllers
             return View();
         }
 
+        public IActionResult Vote(int id)
+        {
+            return ViewComponent("SurveyWidget",id);
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
